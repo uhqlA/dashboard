@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "Vue.volar",
+    "Vue.vscode-typescript-vue-plugin",
+    "christian-kohler.path-intellisense",
+    "steoates.autoimport",
+    "streetsidesoftware.code-spell-checker",
+    "mikestead.dotenv",
+    "mrmlnc.vscode-scss"
+  ]
+}
