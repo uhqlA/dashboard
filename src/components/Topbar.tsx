@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Bell, User, ChevronDown, Settings, LogOut, AlertTriangle, AlertCircle, Info, MapPin, Droplet, Sun, CheckCircle } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 
 interface Notification {
   id: number;
@@ -13,6 +15,8 @@ interface Notification {
 }
 
 const Topbar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([
@@ -72,12 +76,25 @@ const Topbar = () => {
   }, []);
 
   const unreadCount = notifications.filter(n => !n.read).length;
-  const user = {
-    name: 'National Admin',
-    email: 'admin@kenya-env.go.ke',
-    role: 'National Administrator',
-    lastLogin: 'Today, 08:45 AM',
-    avatar: 'https://ui-avatars.com/api/?name=Marsabit+Admin&background=0ea5e9&color=fff'
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
+
+  const formatLastLogin = (lastLogin: string) => {
+    const date = new Date(lastLogin);
+    const today = new Date();
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    
+    if (date.toDateString() === today.toDateString()) {
+      return `Today, ${date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}`;
+    } else if (date.toDateString() === yesterday.toDateString()) {
+      return `Yesterday, ${date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })}`;
+    } else {
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
   };
 
   const markAsRead = (id: number) => {
@@ -231,10 +248,10 @@ const Topbar = () => {
             className="flex items-center space-x-2 p-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
           >
             <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-lg font-bold">
-              {user.name.split(' ').map(n => n[0]).join('')}
+              {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
             </div>
             <span className="text-sm font-medium text-gray-700 dark:text-gray-200 hidden md:inline">
-              {user.name}
+              {user?.name || 'User'}
             </span>
             <ChevronDown size={16} className="text-gray-500 dark:text-gray-400 hidden md:inline" />
           </button>
@@ -244,17 +261,17 @@ const Topbar = () => {
               <div className="p-4 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex items-center space-x-3">
                   <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-lg font-bold">
-                    {user.name.split(' ').map(n => n[0]).join('')}
+                    {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">{user.name}</p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p>
+                    <p className="text-sm font-medium text-gray-900 dark:text-white">{user?.name || 'User'}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">{user?.email || 'user@example.com'}</p>
                     <div className="flex items-center mt-1 space-x-2">
                       <span className="inline-block px-2 py-0.5 text-xs rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-200">
-                        {user.role}
+                        {user?.role || 'User'}
                       </span>
                       <span className="text-xs text-gray-400">•</span>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">Last login: {user.lastLogin}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">Last login: {user?.lastLogin ? formatLastLogin(user.lastLogin) : 'Unknown'}</span>
                     </div>
                   </div>
                 </div>
@@ -292,7 +309,10 @@ const Topbar = () => {
                 </a>
               </div>
               <div className="py-1 border-t border-gray-200 dark:border-gray-700">
-                <button className="w-full text-left flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20">
+                <button 
+                  onClick={handleLogout}
+                  className="w-full text-left flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
+                >
                   <LogOut size={16} className="mr-3" />
                   Sign out
                 </button>

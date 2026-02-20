@@ -47,21 +47,29 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setError(null);
     
     try {
-      // Replace with actual API call
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Login failed');
+      // Mock authentication - replace with actual API call when backend is ready
+      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate API delay
+      
+      // Demo credentials validation
+      const validCredentials = [
+        { email: 'admin@kenya-env.go.ke', password: 'demo123', role: 'National Admin', name: 'National Administrator' },
+        { email: 'county.admin@kenya-env.go.ke', password: 'demo123', role: 'County Admin', name: 'County Administrator' },
+        { email: 'monitor@kenya-env.go.ke', password: 'demo123', role: 'Monitor', name: 'Environmental Monitor' }
+      ];
+      
+      const userCredential = validCredentials.find(cred => cred.email === email && cred.password === password);
+      
+      if (!userCredential) {
+        throw new Error('Invalid email or password');
       }
-
-      const userData = await response.json();
+      
+      const userData: User = {
+        name: userCredential.name,
+        email: userCredential.email,
+        role: userCredential.role,
+        lastLogin: new Date().toISOString(),
+        token: 'mock-jwt-token-' + Math.random().toString(36).substr(2, 9)
+      };
       
       // Store user data and token
       localStorage.setItem('user', JSON.stringify(userData));

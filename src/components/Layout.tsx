@@ -12,7 +12,7 @@ const Layout = ({ children, currentPage, setCurrentPage }: LayoutProps) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <div className="flex h-screen w-full bg-gray-200 dark:bg-gray-900">
+    <div className="flex h-screen w-full bg-gray-200 dark:bg-gray-900 overflow-hidden">
       <Sidebar 
         isCollapsed={isCollapsed} 
         toggleSidebar={() => setIsCollapsed(!isCollapsed)}
@@ -21,7 +21,7 @@ const Layout = ({ children, currentPage, setCurrentPage }: LayoutProps) => {
       />
       <div className="flex flex-col flex-1 overflow-hidden">
         <Topbar />
-        <main className="flex-1 overflow-hidden dark:bg-gray-800">
+        <main className="flex-1 overflow-auto dark:bg-gray-800">
           {children}
         </main>
       </div>
