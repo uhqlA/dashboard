@@ -3,6 +3,8 @@ import Layout from './components/Layout';
 import Map from './components/Map';
 import Analytics from './components/Analytics';
 import Metadata from './components/Metadata';
+import HomePage from './pages/HomePage';
+import AnalyticsPage from './pages/AnalyticsPage';
 
 function App() {
   const [viewMode, setViewMode] = useState<'split' | 'map-full' | 'analytics-full'>('split');
@@ -110,71 +112,10 @@ function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return (
-          <div className="h-full flex flex-col">
-            {/* Control Buttons */}
-            <div className="p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex gap-2">
-              <button
-                onClick={() => setViewMode('split')}
-                className={`px-4 py-2 rounded ${viewMode === 'split' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'}`}
-              >
-                Split View
-              </button>
-            </div>
-
-            {/* Content */}
-            <div className="flex-1">
-              <div className="h-full flex">
-                {/* Interactive Map */}
-                <div className="flex-1 h-full">
-                  <Map onCountySelect={handleCountySelect} selectedCountyName={selectedCounty.name} settings={settings} />
-                </div>
-
-                {/* Analytics and Metadata */}
-                <div className="flex-1 h-full flex flex-col">
-                  <div className="flex-1">
-                    <Analytics />
-                  </div>
-                  
-                  {/* Resize Handle */}
-                  <div
-                    className="h-1 bg-gray-300 dark:bg-gray-600 cursor-row-resize hover:bg-gray-400 dark:hover:bg-gray-500 active:bg-blue-500 transition-colors"
-                    onMouseDown={handleMouseDown}
-                  ></div>
-                  
-                  <div className="p-4" style={{ height: metadataHeight }}>
-                    <Metadata 
-                      region={selectedCounty.name}
-                      wetlandsArea={selectedCounty.wetlandsArea}
-                      lastUpdated={selectedCounty.lastUpdated}
-                      dataSource={selectedCounty.dataSource}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
+        return <HomePage />;
       
       case 'analytics':
-        return (
-          <div className="h-full">
-            {/* Control Buttons */}
-            <div className="p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex gap-2">
-              <button
-                onClick={() => setViewMode('analytics-full')}
-                className={`px-4 py-2 rounded ${viewMode === 'analytics-full' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'}`}
-              >
-                Full Screen Analytics
-              </button>
-            </div>
-
-            {/* Content */}
-            <div className="flex-1">
-              <Analytics />
-            </div>
-          </div>
-        );
+        return <AnalyticsPage />;
       
       case 'maps':
         return (
