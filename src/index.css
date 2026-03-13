@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* Professional color scheme for dashboard */
+:root {
+  --primary-color: rgb(239, 246, 248); /* professional blue */
+  --primary-hover: rgb(225, 226, 226);
+  --secondary-color: rgb(213, 232, 233); /* purple accent */
+  --bg-primary: rgb(185, 208, 209); /* light pink to match sidebar */
+  --bg-secondary: rgb(188, 213, 216); /* medium pink to match sidebar */
+  --text-primary: rgb(218, 226, 226); /* dark purple for contrast */
+  --text-secondary: rgb(227, 240, 240); /* medium purple */
+}
+
+/* Ensure proper transitions */
+* {
+  transition-property: background-color, border-color, color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Override default colors with bright theme */
+.bg-white {
+  background-color: var(--bg-primary) !important;
+}
+
+.bg-gray-50 {
+  background-color: var(--bg-secondary) !important;
+}
+
+.text-gray-800 {
+  color: var(--text-primary) !important;
+}
+
+.text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+.border-gray-200 {
+  border-color: rgb(139, 230, 195) !important;
+}
+
+.border-gray-300 {
+  border-color: rgb(139, 231, 178) !important;
+}
+
+/* Button colors */
+.bg-blue-500 {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-blue-600 {
+  background-color: var(--primary-hover) !important;
+}
+
+.hover\:bg-blue-600:hover {
+  background-color: var(--primary-hover) !important;
+}
+
+.hover\:bg-blue-500:hover {
+  background-color: var(--primary-color) !important;
+}
+
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+  --primary-color: rgb(96 165 250); /* light blue */
+  --primary-hover: rgb(59 130 246);
+  --secondary-color: rgb(191, 178, 245); /* light purple */
+  --bg-primary: rgb(34, 39, 39); /* dark slate */
+  --bg-secondary: rgb(48, 53, 53); /* medium slate */
+  --text-primary: rgb(199, 228, 228); /* light slate */
+  --text-secondary: rgb(240, 235, 235); /* medium light slate */
+}
+
+.dark .bg-white {
+  background-color: var(--bg-primary) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: var(--bg-secondary) !important;
+}
+
+.dark .text-gray-800 {
+  color: var(--text-primary) !important;
+}
+
+.dark .text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+.dark .border-gray-200 {
+  border-color: rgb(42, 46, 46) !important;
+}
+
+.dark .border-gray-300 {
+  border-color: rgb(32, 34, 34) !important;
+}
