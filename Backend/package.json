@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend for branchJ dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "python manage.py runserver 0.0.0.0:3001",
+    "dev": "python manage.py runserver 0.0.0.0:3001",
+    "migrate": "python manage.py migrate",
+    "makemigrations": "python manage.py makemigrations",
+    "test": "python manage.py test"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.7.0"
+  },
+  "keywords": ["node", "express", "postgresql"],
+  "author": "",
+  "license": "ISC"
+}

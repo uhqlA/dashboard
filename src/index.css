@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* Professional color scheme for dashboard */
+:root {
+  --primary-color: rgb(59, 130, 246); /* blue */
+  --primary-hover: rgb(37, 99, 235);
+  --secondary-color: rgb(139, 92, 246); /* purple accent */
+  --bg-primary: rgb(255, 255, 255); /* pure white */
+  --bg-secondary: rgb(249, 250, 251); /* light gray */
+  --text-primary: rgb(0, 0, 0); /* pure black */
+  --text-secondary: rgb(75, 85, 99); /* dark gray */
+}
+
+/* Ensure proper transitions */
+* {
+  transition-property: background-color, border-color, color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Override default colors with bright theme */
+.bg-white {
+  background-color: white !important;
+}
+
+.bg-gray-50 {
+  background-color: rgb(249, 250, 251) !important;
+}
+
+.text-gray-800 {
+  color: black !important;
+}
+
+.text-gray-700 {
+  color: rgb(75, 85, 99) !important;
+}
+
+.border-gray-200 {
+  border-color: rgb(139, 230, 195) !important;
+}
+
+.border-gray-300 {
+  border-color: rgb(139, 231, 178) !important;
+}
+
+/* Button colors */
+.bg-blue-500 {
+  background-color: var(--primary-color) !important;
+}
+
+.bg-blue-600 {
+  background-color: var(--primary-hover) !important;
+}
+
+.hover\:bg-blue-600:hover {
+  background-color: var(--primary-hover) !important;
+}
+
+.hover\:bg-blue-500:hover {
+  background-color: var(--primary-color) !important;
+}
+
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+  --primary-color: rgb(59, 130, 246); /* blue */
+  --primary-hover: rgb(37, 99, 235);
+  --secondary-color: rgb(139, 92, 246); /* purple accent */
+  --bg-primary: rgb(17, 24, 39); /* dark slate */
+  --bg-secondary: rgb(31, 41, 55); /* medium slate */
+  --text-primary: rgb(255, 255, 255); /* pure white */
+  --text-secondary: rgb(229, 231, 235); /* light gray */
+}
+
+.dark .bg-white {
+  background-color: var(--bg-primary) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: var(--bg-secondary) !important;
+}
+
+.dark .text-gray-800 {
+  color: var(--text-primary) !important;
+}
+
+.dark .text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+.dark .border-gray-200 {
+  border-color: rgb(42, 46, 46) !important;
+}
+
+.dark .border-gray-300 {
+  border-color: rgb(32, 34, 34) !important;
+}
