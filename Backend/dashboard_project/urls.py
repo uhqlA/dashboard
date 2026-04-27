@@ -16,8 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
+
+def welcome(request):
+    return JsonResponse({
+        'message': 'Jazamiti Climate Dashboard API',
+        'endpoints': {
+            'test': '/api/test-connection/',
+            'counties': '/api/counties/',
+            'climate_data': '/api/climate-data/',
+            'climate_comparison': '/api/climate-comparison/',
+            'tables': '/api/tables/'
+        },
+        'status': 'running'
+    })
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('', welcome, name='welcome'),
 ]

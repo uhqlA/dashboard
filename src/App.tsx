@@ -16,9 +16,8 @@ function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'analytics' | 'maps' | 'settings'>('home');
   const [selectedCounty, setSelectedCounty] = useState({
     name: 'Marsabit County',
-    wetlandsArea: '1200 sq km',
-    lastUpdated: 'February 18, 2026',
-    dataSource: 'Environmental Monitoring System'
+    lastUpdated: new Date().toLocaleDateString(),
+    dataSource: 'Jazamiti Tree Planting Database'
   });
 
   // Settings state
@@ -26,7 +25,7 @@ function App() {
     defaultMapLayer: 'OpenStreetMap',
     autoFlyToCounty: true,
     showCountyLabels: false,
-    theme: 'light',
+    theme: 'dark',
     defaultViewMode: 'split' as 'split' | 'map-full' | 'analytics-full',
     dataRefreshInterval: 30, // minutes
     alertThreshold: 10, // percentage change
@@ -132,9 +131,8 @@ function App() {
   const handleCountySelect = (county: any) => {
     setSelectedCounty({
       name: county.name,
-      wetlandsArea: county.wetlandsArea,
-      lastUpdated: county.lastUpdated,
-      dataSource: county.dataSource
+      lastUpdated: new Date().toLocaleDateString(),
+      dataSource: 'Jazamiti Tree Planting Database'
     });
   };
 
@@ -176,7 +174,6 @@ function App() {
                   <div className="p-4" style={{ height: metadataHeight }}>
                     <Metadata 
                       region={selectedCounty.name}
-                      wetlandsArea={selectedCounty.wetlandsArea}
                       lastUpdated={selectedCounty.lastUpdated}
                       dataSource={selectedCounty.dataSource}
                     />

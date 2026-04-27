@@ -2,13 +2,13 @@
 
 /* Professional color scheme for dashboard */
 :root {
-  --primary-color: rgb(239, 246, 248); /* professional blue */
-  --primary-hover: rgb(225, 226, 226);
-  --secondary-color: rgb(213, 232, 233); /* purple accent */
-  --bg-primary: rgb(185, 208, 209); /* light pink to match sidebar */
-  --bg-secondary: rgb(188, 213, 216); /* medium pink to match sidebar */
-  --text-primary: rgb(218, 226, 226); /* dark purple for contrast */
-  --text-secondary: rgb(227, 240, 240); /* medium purple */
+  --primary-color: rgb(59, 130, 246); /* blue */
+  --primary-hover: rgb(37, 99, 235);
+  --secondary-color: rgb(139, 92, 246); /* purple accent */
+  --bg-primary: rgb(255, 255, 255); /* pure white */
+  --bg-secondary: rgb(249, 250, 251); /* light gray */
+  --text-primary: rgb(0, 0, 0); /* pure black */
+  --text-secondary: rgb(75, 85, 99); /* dark gray */
 }
 
 /* Ensure proper transitions */
@@ -20,19 +20,19 @@
 
 /* Override default colors with bright theme */
 .bg-white {
-  background-color: var(--bg-primary) !important;
+  background-color: white !important;
 }
 
 .bg-gray-50 {
-  background-color: var(--bg-secondary) !important;
+  background-color: rgb(249, 250, 251) !important;
 }
 
 .text-gray-800 {
-  color: var(--text-primary) !important;
+  color: black !important;
 }
 
 .text-gray-700 {
-  color: var(--text-secondary) !important;
+  color: rgb(75, 85, 99) !important;
 }
 
 .border-gray-200 {
@@ -63,13 +63,13 @@
 /* Dark mode styles */
 .dark {
   color-scheme: dark;
-  --primary-color: rgb(96 165 250); /* light blue */
-  --primary-hover: rgb(59 130 246);
-  --secondary-color: rgb(191, 178, 245); /* light purple */
-  --bg-primary: rgb(34, 39, 39); /* dark slate */
-  --bg-secondary: rgb(48, 53, 53); /* medium slate */
-  --text-primary: rgb(199, 228, 228); /* light slate */
-  --text-secondary: rgb(240, 235, 235); /* medium light slate */
+  --primary-color: rgb(59, 130, 246); /* blue */
+  --primary-hover: rgb(37, 99, 235);
+  --secondary-color: rgb(139, 92, 246); /* purple accent */
+  --bg-primary: rgb(17, 24, 39); /* dark slate */
+  --bg-secondary: rgb(31, 41, 55); /* medium slate */
+  --text-primary: rgb(255, 255, 255); /* pure white */
+  --text-secondary: rgb(229, 231, 235); /* light gray */
 }
 
 .dark .bg-white {
